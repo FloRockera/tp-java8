@@ -20,6 +20,11 @@ public class Lambda_02_Test {
     }
     // end::PersonToAccountMapper[]
 
+
+	protected static final Integer Integer = null;
+	protected static final Person Person = null;
+
+    
     // tag::map[]
     private List<Account> map(List<Person> personList, PersonToAccountMapper mapper) {
         List<Account> accounts = new ArrayList<>();
@@ -34,10 +39,17 @@ public class Lambda_02_Test {
     public void test_map_person_to_account() throws Exception {
 
         List<Person> personList = Data.buildPersonList(100);
+        
+        
+        
+        // Elle a deux paramètres et par défaut elle est initialisée à 100
+        PersonToAccountMapper mapper = (Person p) -> new Account(p, 100);
+    	
+        
 
         // TODO transformer la liste de personnes en liste de comptes
         // TODO tous les objets comptes ont un solde à 100 par défaut
-        List<Account> result = map(personList, null);
+        List<Account> result = map(personList, mapper);
 
         assert result.size() == personList.size();
         for (Account account : result) {
